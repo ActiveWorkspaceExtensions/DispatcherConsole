@@ -9,9 +9,11 @@ A Customization to add the dispatcher administration tasks to Active Workspace 6
 ## Functionalities
 Dispatcher Admin Console allows users to:
 **View current Dispatcher requests**
-    ![View Dispatcher Requests](/images/1-DispatcherConsole.png)
+
+![View Dispatcher Requests](/images/1-DispatcherConsole.png)
 
 **Filter requests**
+
 ![View Dispatcher Requests](/images/2-DispatcherConsole.png)
 
 **Refresh requests status**
