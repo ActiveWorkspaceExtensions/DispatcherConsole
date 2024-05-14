@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Import>
+  <Client abbreviation="AWClient" name="AWClient">
+    <ClientScope hostingClientName="" name="Dispatcher Requests" uri="dispatcherRequests">
+      <ColumnConfig columnConfigId="dispatcherRequests" sortBy="2" sortDirection="Ascending">
+         <ColumnDef columnName="currentState" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="currentState" width="150"/>
+         <ColumnDef columnName="providerName" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="providerName" width="150"/>
+         <ColumnDef columnName="serviceName" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="serviceName" width="150"/>
+         <ColumnDef columnName="taskID" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="taskID" width="150"/>
+         <ColumnDef columnName="creation_date" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="creation_date" width="150"/>
+         <ColumnDef columnName="owning_user" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="owning_user" width="150"/>
+         <ColumnDef columnName="primaryObjects" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="primaryObjects" width="150"/>
+         <ColumnDef columnName="secondaryObjects" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="secondaryObjects" width="150"/>
+         <ColumnDef columnName="last_mod_date" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="last_mod_date" width="150"/>
+         <ColumnDef columnName="priority" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="priority" width="150"/>
+         <ColumnDef columnName="owning_group" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="owning_group" width="150"/>
+         <ColumnDef columnName="last_mod_user" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="last_mod_user" width="150"/>
+         <ColumnDef columnName="owning_site" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="owning_site" width="150"/>
+         <ColumnDef columnName="type" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="type" width="150"/>
+         <ColumnDef columnName="startTime" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="startTime" width="150"/>
+         <ColumnDef columnName="endTime" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="endTime" width="150"/>
+         <ColumnDef columnName="interval" filterable="true" hidden="false" objectType="DispatcherRequest" propertyName="interval" width="150"/>
+      </ColumnConfig>
+    </ClientScope>
+  </Client>
+</Import>

@@ -1,0 +1,15 @@
+{
+    "DispatcherAdministrationHeaderTitle": "Dispatcher Request Administration Console",
+    "DispatcherAdministrationBrowserTitle": "Teamcenter",
+    "DispatcherAdministrationBrowserSubTitle": "Dispatcher Administration",
+    "dispatcherRequestsTitle": "Dispatcher Requests",
+    "cst3DeleteDispRequestTitle": "Delete Request",
+    "reqDeleteConfirmationMessage": "Selected Request(s) will be deleted",
+    "reqResubmitConfirmationMessage": "Selected Request(s) will be resubmitted",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "resubmit": "Submit",
+    "cst3ResubmitDispRequestTitle": "Resubmit Request",     
+    "cst3RefreshDispRequestTitle": "Reload All",
+    "cst3RefreshSelDispRequestTitle": "Reload Selected"
+}

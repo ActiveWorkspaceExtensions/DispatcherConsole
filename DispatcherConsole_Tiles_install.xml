@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE ActiveWorkspaceGateway SYSTEM "Awp0aws2ActiveWorkspaceGateway.dtd" >
+<ActiveWorkspaceGateway version="1.0">
+    <!-- Tile Template definitions begins here -->
+    <TileTemplate templateId="DispatcherConsoleTileTemplate">
+        <ThemeIndex index="2" />
+        <Icon>Dispatcherconsole</Icon>
+        <Action>#/dispatcherRequests</Action>
+        <ActionType type="0" />
+    </TileTemplate>
+    <!-- Tile definitions begins here -->
+    <Tile tileId="DispatcherConsoleTile" templateId="DispatcherConsoleTileTemplate">
+        <Name>Dispatcher Console</Name>
+    </Tile>
+    
+    <!-- Tile collection(Workspace) definitions begins here -->
+    <TileCollection>
+        <WorkspaceScope id="TcActiveAdminWorkspace"/>
+        <CollectionTiles tileId="DispatcherConsoleTile" groupName="main" size="0" protected="1"/>
+    </TileCollection>   
+</ActiveWorkspaceGateway>

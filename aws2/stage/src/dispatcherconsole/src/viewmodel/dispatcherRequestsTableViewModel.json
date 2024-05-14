@@ -1,0 +1,298 @@
+{
+    "schemaVersion": "1.0.0",
+    "imports": [],
+    "data":{
+        "columns": [{
+            "name": "currentState",
+            "displayName": "State",
+            "minWidth": 60,
+            "width": 120,
+            "typeName":"",
+            "isFilteringEnabled": true
+        },
+        {
+            "name": "providerName",
+            "displayName": "Provider",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "serviceName",
+            "displayName": "Service",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",            
+            "isFilteringEnabled": true
+        },
+        {
+            "name": "taskID",
+            "displayName": "Task ID",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "creation_date",
+            "displayName": "Creation Date",
+            "minWidth": 60,
+            "width": 160,
+            "typeName": "Date",
+            "isFilteringEnabled":  false
+        },        
+        {
+            "name": "owning_user",
+            "displayName": "Owning User",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "primaryObjects",
+            "displayName": "Primary Objects",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "secondaryObjects",
+            "displayName": "Secondary Objects",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "last_mod_date",
+            "displayName": "Modified Date",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "priority",
+            "displayName": "Priority",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "owning_group",
+            "displayName": "Group",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "last_mod_user",
+            "displayName": "Last Modifying User",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "owning_site",
+            "displayName": "Owning Site",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "type",
+            "displayName": "Type",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "startTime",
+            "displayName": "Start Time",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "endTime",
+            "displayName": "End Time",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        },
+        {
+            "name": "interval",
+            "displayName": "Interval",
+            "minWidth": 60,
+            "width": 160,
+            "typeName":"",
+            "isFilteringEnabled":  false
+        }
+    ]
+    },
+    "actions": {
+        
+        "doDispatcherReqDataProvider": {
+            "actionType": "dataProvider",
+            "method": "dispatcherReqDataProvider"
+        },
+        "loadDispatcherRequests": {
+            "actionType": "TcSoaService",
+            "serviceName": "Internal-Core-2008-06-DispatcherManagement",
+            "method": "queryDispatcherRequests",
+            "inputData": {
+                "inputs": "{{function:getDispatcherRequestInput}}"
+            },
+            "policy": {
+                "types": [{
+                    "name": "DispatcherRequest",
+                    "properties": [
+                     {"name": "currentState"},
+                     {"name": "providerName"},
+                     {"name": "serviceName"},
+                     {"name": "taskID"},
+                     {"name": "creation_date"},
+                     {"name": "owning_user"},
+                     {"name": "primaryObjects"},
+                     {"name": "secondaryObjects"},
+                     {"name": "last_mod_date"},
+                     {"name": "priority"},
+                     {"name": "owning_group"},
+                     {"name": "last_mod_user"},
+                     {"name": "owning_site"},
+                     {"name": "type"},
+                     {"name": "startTime"},
+                     {"name": "endTime"},
+                     {"name": "interval"}
+                    ]
+                }]
+            },
+            "outputData": {
+                "dispReqs": "{{function:parseDispatcherRequests}}",
+                "output": "{{function:processOutput}}",
+                "selectFirstObject": true
+            },
+            "deps": "js/dispatcherConsoleService"
+        },
+        "getFilterFacets": {
+            "actionType": "JSFunction",
+            "method": "getFilterFacets",
+            "inputData": {
+                "filterFacetInput": "{{filterFacetInput}}",
+                "contextData": "{{data}}"
+            },
+            "outputData": {
+                "filterFacetResults": ""
+            },
+            "deps": "js/dispatcherConsoleService"
+        },
+        "dispatcherTableClientRefresh": {
+            "actionType": "Event",
+            "method": "Event",
+            "inputData": {
+                "events": [ {
+                    "name": "dispatcherRequestsGridView.plTable.clientRefresh"
+                } ]
+            }
+        },
+        "selectFirstItem": {
+            "actionType": "JSFunction",
+            "method": "setSelection",
+            "inputData": {
+                "selectionModel": "{{data.dataProviders.dispatcherReqDataProvider.selectionModel}}",
+                "newSelection": "{{data.dispReqs.outputFilteredObjects[0].uid}}"
+            },
+            "deps": "js/selectionModelFactory"
+        },        
+        "searchTableViewLoadData": {
+            "actionType": "batchJob",
+            "steps": [
+                {
+                    "action": "loadDispatcherRequests"
+                },
+                {
+                    "action": "selectFirstItem"                    
+                }
+            ]
+        }
+    },
+
+    "columnProviders": {
+        "dispatcherReqColProvider": {                        
+            "sortCriteria": [],
+            "frozenColumnIndex": 0,
+            "columns": "{{data.columns}}"
+        }
+    },
+
+    "dataProviders": {
+        "dispatcherReqDataProvider": {
+            "action": "searchTableViewLoadData",
+            "editContext": "TABLE_CONTEXT",
+            "response": "{{data.dispReqs.outputFilteredObjects}}",
+            "totalFound": "{{data.dispReqs.totalFound}}",            
+            "inputData": {
+                "selectionModel": "{{subPanelContext.selectionModel}}"
+            },                        
+            "commandsAnchor": "com.siemens.splm.clientfx.tcui.commands.modelObjectCellListActionCommands",
+            "filterFacetAction": "getFilterFacets",
+            "filterFacetResults": "{{data.filterFacetResults}}"            
+        }
+    },
+
+    "grids": {
+        "dispatcherRequestsGridView": {
+            "dataProvider": "dispatcherReqDataProvider",
+            "columnProvider": "dispatcherReqColProvider",
+            "enableArrangeMenu": true,            
+            "gridOptions": {                
+                "enableSorting": false,
+                "isFilteringEnabled": true,
+                "enableGridMenu": true               
+            }
+        }
+    },
+
+    "onEvent": [        
+        {
+            "eventId": "primaryWorkarea.multiSelectAction",
+            "action": "dispatcherTableClientRefresh"
+        }
+    ],
+
+    "functions": {
+        "getDispatcherRequestInput": {
+            "functionName": "getDispatcherRequestInput",
+            "parameters": [
+                "{{data}}"
+            ]
+        },
+        "filterRows": {
+            "functionName": "parseDispatcherRequests",
+            "parameters": [
+                "{{data}}"
+            ]
+        },
+        "processOutput": {
+                "functionName": "processOutput",
+                "parameters": [
+                    "{{data}}",
+                    "{{subPanelContext.searchState}}"
+                ]
+            }
+    },
+    "preferences": 
+    [
+         "ETS.TRANSLATORS.SIEMENS"
+    ]
+}

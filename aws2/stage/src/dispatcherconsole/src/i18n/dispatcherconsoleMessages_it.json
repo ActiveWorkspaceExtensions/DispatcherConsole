@@ -1,0 +1,21 @@
+{
+    "DispatcherAdministrationHeaderTitle": "Dispatcher Request Administration Console",
+    "DispatcherAdministrationBrowserTitle": "Teamcenter",
+    "DispatcherAdministrationBrowserSubTitle": "Dispatcher Administration",
+    "dispatcherRequestsTitle": "Dispatcher Requests",
+    "cst3DeleteDispRequestTitle": "Cancella Richiesta Request",
+    "reqDeleteConfirmationMessage": "Le richieste selezionate verranno eliminate",
+    "reqResubmitConfirmationMessage": "Le richieste selezionate verranno inviate nuovamente",
+    "cancel": "Cancel",
+    "delete": "Elimina",
+    "resubmit": "Invia",
+    "cst3ResubmitDispRequestTitle": "Invia richiesta",
+    "header": "Header",
+    "body": "Body",
+    "footer": "Footer",
+    "checkBoxName": "Enable the OK button in footer",
+    "save": "Ok",
+    "textValue": "Contents here",
+    "cst3RefreshDispRequestTitle": "Ricarica Tutto",
+    "cst3RefreshSelDispRequestTitle": "Ricarica Selezionato"
+}

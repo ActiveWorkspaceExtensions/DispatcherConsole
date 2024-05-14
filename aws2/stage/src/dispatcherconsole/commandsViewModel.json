@@ -1,0 +1,419 @@
+{
+    "commands": {
+        "cst3DeleteDispRequest": {
+            "iconId": "cmdDelete",
+            "title": "{{i18n.cst3DeleteDispRequestTitle}}",
+            "extendedTooltip": {
+                "view": "extendedTooltipDefault"
+            }
+        },
+        "cst3ResubmitDispRequest": {
+            "iconId": "cmdRedo",
+            "title": "{{i18n.cst3ResubmitDispRequestTitle}}",
+            "extendedTooltip": {
+                "view": "extendedTooltipDefault"
+            }
+        },
+        "cst3RefreshDispRequest": {
+            "iconId": "cmdRefresh",
+            "title": "{{i18n.cst3RefreshDispRequestTitle}}",
+            "extendedTooltip": {
+                "view": "extendedTooltipDefault"
+            }
+        },
+        "cst3RefreshSelDispRequest": {
+            "iconId": "cmdRefresh",
+            "title": "{{i18n.cst3RefreshSelDispRequestTitle}}",
+            "extendedTooltip": {
+                "view": "extendedTooltipDefault"
+            }
+        }
+    },
+    "commandHandlers": {
+        "cst3DeleteDispRequestHandler": {
+            "id": "cst3DeleteDispRequest",
+            "action": "activatecst3DeleteDispRequest",
+            "activeWhen": true,
+            "visibleWhen": {
+                "condition": "conditions.isDisptacherRequestSelected"
+            }
+        },
+        "cst3ResubmitDispRequestHandler": {
+            "id": "cst3ResubmitDispRequest",
+            "action": "activatecst3ResubmitDispRequest",
+            "activeWhen": true,
+            "visibleWhen": {
+                "condition": "conditions.isDisptacherRequestSelected"
+            }
+        },
+        "cst3RefreshDispRequestHandler": {
+            "id": "cst3RefreshDispRequest",
+            "action": "activatecst3RefreshDispRequest",
+            "activeWhen": true,
+            "visibleWhen": {
+                "condition": "conditions.isDispatcherContextOnly"
+            }
+        },
+        "cst3RefreshSelDispRequestHandler": {
+            "id": "cst3RefreshSelDispRequest",
+            "action": "activatecst3RefreshSelDispRequest",
+            "activeWhen": true,
+            "visibleWhen": {
+                "condition": "conditions.isDisptacherRequestSelected"
+            }
+        }
+    },
+    "commandPlacements": {
+        "cst3DeleteDispRequestaw_rightWall": {
+            "id": "cst3DeleteDispRequest",
+            "uiAnchor": "aw_workArea_right",
+            "priority": 20
+        },
+        "cst3ResubmitDispRequestaw_rightWall": {
+            "id": "cst3ResubmitDispRequest",
+            "uiAnchor": "aw_workArea_right",
+            "priority": 10
+        },
+        "cst3RefreshDispRequestaw_primaryWorkArea": {
+            "id": "cst3RefreshDispRequest",
+            "uiAnchor": "aw_primaryWorkArea",
+            "priority": 100
+        },
+        "cst3RefreshSelDispRequestaw_primaryWorkArea": {
+            "id": "cst3RefreshSelDispRequest",
+            "uiAnchor": "aw_primaryWorkArea",
+            "priority": 100
+        }
+    },
+    "actions": {
+        "activatecst3DeleteDispRequest": {
+            "actionType": "Event",
+            "method": "Event",
+            "inputData": {
+                "events": [
+                    {
+                        "name": "confirmDispReqDeleteEvent",
+                        "condition": "(ctx.mselected && ctx.mselected.length > 0)"
+                    }
+                ]
+            }
+        },
+        "deleteRequest": {
+            "actionType": "TcSoaService",
+            "serviceName": "Internal-Core-2008-06-DispatcherManagement",
+            "method": "updateDispatcherRequests",
+            "inputData": {
+                "inputs": "{{function:getDeleteInput}}"
+            },
+            "outputData": {
+                "outputObjects": "outputObjects"
+            },
+            "events": {
+                "success":
+                [
+                    {
+                        "name": "dispatcherRequestsGridView.plTable.reload"
+                    }
+                ]
+            },
+            "policy": {
+                "types": [
+                    {
+                        "name": "DispatcherRequest",
+                        "properties": [
+                            {
+                                "name": "currentState"
+                            },
+                            {
+                                "name": "providerName"
+                            },
+                            {
+                                "name": "serviceName"
+                            },
+                            {
+                                "name": "taskID"
+                            },
+                            {
+                                "name": "creation_date"
+                            },
+                            {
+                                "name": "owning_user"
+                            },
+                            {
+                                "name": "primaryObjects"
+                            },
+                            {
+                                "name": "secondaryObjects"
+                            },
+                            {
+                                "name": "last_mod_date"
+                            },
+                            {
+                                "name": "priority"
+                            },
+                            {
+                                "name": "owning_group"
+                            },
+                            {
+                                "name": "last_mod_user"
+                            },
+                            {
+                                "name": "owning_site"
+                            },
+                            {
+                                "name": "type"
+                            },
+                            {
+                                "name": "startTime"
+                            },
+                            {
+                                "name": "endTime"
+                            },
+                            {
+                                "name": "interval"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "deps": "js/dispatcherConsoleService"
+        },
+        "activatecst3ResubmitDispRequest": {
+            "actionType": "Event",
+            "method": "Event",
+            "inputData": {
+                "events": [
+                    {
+                        "name": "confirmDispReqResubmitEvent",
+                        "condition": "(ctx.mselected && ctx.mselected.length > 0)"
+                    }
+                ]
+            }
+        },
+        "resubmitRequest": {
+            "actionType": "TcSoaService",
+            "serviceName": "Internal-Core-2008-06-DispatcherManagement",
+            "method": "updateDispatcherRequests",
+            "inputData": {
+                "inputs": "{{function:getResubmitInput}}"
+            },
+            "outputData": {
+                "outputObjects": "outputObjects"
+            },
+            "events": {
+                "success":
+                [
+                    {
+                        "name": "dispatcherRequestsGridView.plTable.reload"
+                    }
+                ]
+            },
+            "policy": {
+                "types": [
+                    {
+                        "name": "DispatcherRequest",
+                        "properties": [
+                            {
+                                "name": "currentState"
+                            },
+                            {
+                                "name": "providerName"
+                            },
+                            {
+                                "name": "serviceName"
+                            },
+                            {
+                                "name": "taskID"
+                            },
+                            {
+                                "name": "creation_date"
+                            },
+                            {
+                                "name": "owning_user"
+                            },
+                            {
+                                "name": "primaryObjects"
+                            },
+                            {
+                                "name": "secondaryObjects"
+                            },
+                            {
+                                "name": "last_mod_date"
+                            },
+                            {
+                                "name": "priority"
+                            },
+                            {
+                                "name": "owning_group"
+                            },
+                            {
+                                "name": "last_mod_user"
+                            },
+                            {
+                                "name": "owning_site"
+                            },
+                            {
+                                "name": "type"
+                            },
+                            {
+                                "name": "startTime"
+                            },
+                            {
+                                "name": "endTime"
+                            },
+                            {
+                                "name": "interval"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "deps": "js/dispatcherConsoleService"
+        },
+        "activatecst3RefreshDispRequest": {
+            "actionType": "Event",
+            "method": "Event",
+            "inputData": {
+                "events": [
+                    {
+                        "name": "dispatcherRequestsGridView.plTable.reload"
+                    }
+                ]
+            }
+        },
+        "activatecst3RefreshSelDispRequest": {
+            "actionType": "TcSoaService",
+            "serviceName": "Internal-Core-2008-06-DispatcherManagement",
+            "method": "queryDispatcherRequests",
+            "inputData": {
+                "inputs": "{{function:getDispatcherRefreshInput}}"
+            },
+            "policy": {
+                "types": [{
+                    "name": "DispatcherRequest",
+                    "properties": [
+                     {"name": "currentState"},
+                     {"name": "providerName"},
+                     {"name": "serviceName"},
+                     {"name": "taskID"},
+                     {"name": "creation_date"},
+                     {"name": "owning_user"},
+                     {"name": "primaryObjects"},
+                     {"name": "secondaryObjects"},
+                     {"name": "last_mod_date"},
+                     {"name": "priority"},
+                     {"name": "owning_group"},
+                     {"name": "last_mod_user"},
+                     {"name": "owning_site"},
+                     {"name": "type"},
+                     {"name": "startTime"},
+                     {"name": "endTime"},
+                     {"name": "interval"}
+                    ]
+                }]
+            },
+            "outputData": {                
+            },
+            "deps": "js/dispatcherConsoleService"
+        }
+    },
+    "conditions": {
+        "isDispatcherContext": {
+            "expression": "ctx.locationContext['ActiveWorkspace:Location']==='DispatcherAdministration'"
+        },
+        "isDispatcherContextOnly": {
+            "expression": "(ctx.locationContext['ActiveWorkspace:Location']==='DispatcherAdministration') && (!ctx.mselected || ctx.mselected.length == 0)"
+        },
+        "isDisptacherRequestSelected": {
+            "expression": "(ctx.locationContext['ActiveWorkspace:Location']==='DispatcherAdministration') && (ctx.mselected && ctx.mselected.length > 0)"
+        },
+        "objectIsSelected": {
+            "expression": "ctx.selected"
+        }
+    },
+    "onEvent": [
+        {
+            "eventId": "confirmDispReqDeleteEvent",
+            "message": "reqDeleteConfirmationMessage"
+        },
+        {
+            "eventId": "confirmDispReqResubmitEvent",
+            "message": "reqResubmitConfirmationMessage"
+        }
+    ],
+    "messages": {
+        "reqDeleteConfirmationMessage": {
+            "messageType": "WARNING",
+            "messageText": "{{i18n.reqDeleteConfirmationMessage}}",
+            "navigationOptions": [
+                {
+                    "option": "Cancel",
+                    "text": "{{i18n.cancel}}"
+                },
+                {
+                    "option": "Delete",
+                    "text": "{{i18n.delete}}",
+                    "action": "deleteRequest"
+                }
+            ]
+        },
+        "reqResubmitConfirmationMessage": {
+            "messageType": "WARNING",
+            "messageText": "{{i18n.reqResubmitConfirmationMessage}}",
+            "navigationOptions": [
+                {
+                    "option": "Cancel",
+                    "text": "{{i18n.cancel}}"
+                },
+                {
+                    "option": "Resubmit",
+                    "text": "{{i18n.resubmit}}",
+                    "action": "resubmitRequest"
+                }
+            ]
+        }
+    },
+    "i18n": {
+        "cst3DeleteDispRequestTitle": [
+            "dispatcherconsoleMessages"
+        ],
+        "delete": [
+            "dispatcherconsoleMessages"
+        ],
+        "cancel": [
+            "dispatcherconsoleMessages"
+        ],
+        "resubmit": [
+            "dispatcherconsoleMessages"
+        ],
+        "reqDeleteConfirmationMessage": [
+            "dispatcherconsoleMessages"
+        ],
+        "cst3ResubmitDispRequestTitle": [
+            "dispatcherconsoleMessages"
+        ],
+        "reqResubmitConfirmationMessage": [
+            "dispatcherconsoleMessages"
+        ],
+        "cst3RefreshDispRequestTitle": [
+            "dispatcherconsoleMessages"
+        ],
+        "cst3RefreshSelDispRequestTitle": [
+            "dispatcherconsoleMessages"
+        ]
+    },
+    "functions": {
+        "getDeleteInput": {
+            "functionName": "getDeleteRequestInput"
+        },
+        "getResubmitInput": {
+            "functionName": "getResubmitRequestInput"
+        },
+        "getDispatcherRefreshInput": {
+            "functionName": "getDispatcherRefreshInput"
+        }
+
+
+        
+    }
+}

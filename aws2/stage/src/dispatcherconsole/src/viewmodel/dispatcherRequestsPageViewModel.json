@@ -1,0 +1,31 @@
+{
+    "schemaVersion": "1.0.0",
+    "data": {
+        "_provider": {
+            "breadcrumbConfig": {
+                "vm" : "AwSearchBreadcrumb",
+                "noUpdate": false,
+                "type": "search"
+            },
+            "clientScopeURI": "dispatcherRequests",
+            "nameToken": "dispatcherRequests",
+            "context": {
+                "search": {
+                    "hideInContentSearchBox": true
+                }
+            },
+            "viewModes": {
+                "TableView": {
+                    "primaryWorkArea": "table",
+                    "secondaryWorkArea": false
+                },
+                "TableSummaryView": {
+                    "primaryWorkArea": "table",
+                    "secondaryWorkArea": true
+                }
+            },
+	        "defaultDisplayMode" : "TableView",
+            "viewBase": "dispatcherRequests"
+        }
+    }
+}

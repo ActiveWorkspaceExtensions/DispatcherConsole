@@ -1,0 +1,36 @@
+{
+    "DispatcherAdministration": {
+        "data": {
+            "browserTitle": {
+                "source": "/i18n/dispatcherconsoleMessages",
+                "key": "DispatcherAdministrationBrowserTitle"
+            },
+            "browserSubTitle": {
+                "source": "/i18n/dispatcherconsoleMessages",
+                "key": "DispatcherAdministrationBrowserSubTitle"
+            },
+            "headerTitle": {
+                "source": "/i18n/dispatcherconsoleMessages",
+                "key": "DispatcherAdministrationHeaderTitle"
+            }
+        },
+        "view": "AwSearchLocation",
+        "parent": "root"
+    },
+    "dispatcherRequests": {        
+        "data": {            
+            "priority": 0,
+            "label": {
+                "source": "/i18n/dispatcherconsoleMessages",
+                "key": "dispatcherRequestsTitle"
+            }            
+        },
+        "params": {
+            "filter": null
+        },
+        "parent": "DispatcherAdministration",
+        "reloadOnSearch": false,       
+        "view": "dispatcherRequestsPage",
+        "url": "/dispatcherRequests"
+    }
+}
